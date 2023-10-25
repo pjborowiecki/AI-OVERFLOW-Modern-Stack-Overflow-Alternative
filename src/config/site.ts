@@ -8,9 +8,9 @@ const links = {
 }
 
 export const siteConfig = {
-  name: "SaaSy Land",
+  name: "AI Overflow",
   description:
-    "An open-source starter for Next.js 13 full-stack projects with advanced authentication and several database configurations. The aim of this project is to provide a solid foundation for faster building and launching SaaS products, marketing sites, blogs, and more.",
+    "Modern, AI-powered, community-driven Stack Overflow alternative for developers. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.",
   links,
   url: "https://saasyland.com",
   author: "pjborowiecki",
