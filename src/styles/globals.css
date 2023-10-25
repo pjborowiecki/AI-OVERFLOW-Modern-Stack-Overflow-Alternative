@@ -47,9 +47,7 @@
     --input: 12 6.5% 15.1%;
     --ring: 24 5.7% 82.9%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
@@ -61,5 +59,30 @@
 @layer utilities {
   .primary-gradient {
     @apply bg-gradient-to-r from-customOrange-500 to-customOrange-400;
+  }
+
+  .primary-text-gradient {
+    background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@layer components {
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply h-3 w-3 rounded-[2px];
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-customLight-800 dark:bg-customDark-300;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-customLight-700 dark:bg-customDark-500;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-customLight-700/50 dark:bg-customDark-500/50;
   }
 }

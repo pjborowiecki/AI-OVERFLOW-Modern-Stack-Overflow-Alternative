@@ -64,7 +64,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background antialiased",
+          "bg-background antialiased",
           fontInter.variable,
           fontSpaceGrotesk.variable,
           fontJetBrainsMono.variable
