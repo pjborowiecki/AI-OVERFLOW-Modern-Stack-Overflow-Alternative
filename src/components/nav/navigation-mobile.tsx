@@ -77,7 +77,7 @@ export function NavigationMobile({ navItems }: NavigationMobileProps) {
           </Link>
         </div>
         <div className="flex flex-col gap-4 pl-16 text-xl font-medium leading-none tracking-wide">
-          {navItems.map((item) => (
+          {/* {navItems.map((item) => (
             <MobileLink
               key={item.title}
               href={item.href}
@@ -86,7 +86,7 @@ export function NavigationMobile({ navItems }: NavigationMobileProps) {
             >
               {item.title}
             </MobileLink>
-          ))}
+          ))} */}
         </div>
       </SheetContent>
     </Sheet>

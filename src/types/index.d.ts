@@ -4,6 +4,7 @@ import type { JWT } from "next-auth/jwt"
 export interface NavItem {
   title: string
   href: string
+  icon?: string
   disabled?: boolean
 }
 

@@ -16,26 +16,41 @@ export const siteConfig = {
   author: "pjborowiecki",
   hostingRegion: "fra1",
   keywords: ["SaaS", "Next.js", "Template"],
-  navItems: [
+  navItemsSidebar: [
     {
-      title: "About",
-      href: "/about",
+      title: "Home",
+      href: "/",
+      icon: "home",
     },
     {
-      title: "Features",
-      href: "/features",
+      title: "Community",
+      href: "/community",
+      icon: "community",
     },
     {
-      title: "Pricing",
-      href: "/pricing",
+      title: "Collections",
+      href: "/collections",
+      icon: "star",
     },
     {
-      title: "FAQ",
-      href: "/faq",
+      title: "Find Jobs",
+      href: "/jobs",
+      icon: "suitcase",
     },
     {
-      title: "Blog",
-      href: "/blog",
+      title: "Tags",
+      href: "/tags",
+      icon: "tag",
+    },
+    {
+      title: "Profile",
+      href: "/profile",
+      icon: "user",
+    },
+    {
+      title: "Ask a Question",
+      href: "/ask-question",
+      icon: "question",
     },
   ],
   navItemsMobile: [],
