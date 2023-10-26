@@ -3,17 +3,12 @@
 import * as React from "react"
 import Link from "next/link"
 import { useSelectedLayoutSegment } from "next/navigation"
-import type { NavItem } from "@/types"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Icons } from "@/components/icons"
-
-interface NavigationMobileProps {
-  navItems: NavItem[]
-}
 
 interface MobileLinkProps extends React.PropsWithChildren {
   href: string
@@ -44,15 +39,15 @@ function MobileLink({
   )
 }
 
-export function NavigationMobile({ navItems }: NavigationMobileProps) {
+export function NavigationMobile() {
   const segment = useSelectedLayoutSegment()
   const [isOpen, setIsOpen] = React.useState<boolean>(false)
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild className="transition-all duration-300 ease-in-out">
-        <Button variant="navbarIcon" size="icon" className="md:hidden">
-          <Icons.menuToggle className="h-5 w-5" aria-hidden="true" />
+        <Button variant="navbarIcon" size="icon" className="ml-2 sm:hidden">
+          <Icons.hamburgerMenu className="h-6 w-6" aria-hidden="true" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
@@ -63,21 +58,22 @@ export function NavigationMobile({ navItems }: NavigationMobileProps) {
         <div className="pl-4">
           <Link
             href="/"
-            className="flex items-center gap-2"
+            className="flex items-center gap-3"
             onClick={() => setIsOpen(false)}
           >
-            <Icons.rocket
-              className="mr-2 h-8 w-8 text-customOrange-400"
-              aria-hidden="true"
-            />
-            <span className="text-2xl font-bold leading-none tracking-wide">
-              {siteConfig.name}
-            </span>
-            <span className="sr-only">Home</span>
+            <Icons.logo className="mr-2 h-6 w-6" aria-hidden="true" />
+            <h2 className="font-spaceGrotesk text-[24px] font-bold leading-[31.2px] text-customDark-100 hover:opacity-50 dark:text-customLight-900">
+              {siteConfig.name.split(" ")[0]}{" "}
+              <span className="text-customOrange-500">
+                {siteConfig.name.split(" ")[1]}
+              </span>
+            </h2>
+
+            <span className="sr-only">Go to Home Page</span>
           </Link>
         </div>
-        <div className="flex flex-col gap-4 pl-16 text-xl font-medium leading-none tracking-wide">
-          {/* {navItems.map((item) => (
+        <div className="flex flex-col gap-6 pl-16 text-xl font-medium leading-none tracking-wide">
+          {siteConfig.navItemsMobile.map((item) => (
             <MobileLink
               key={item.title}
               href={item.href}
@@ -86,7 +82,7 @@ export function NavigationMobile({ navItems }: NavigationMobileProps) {
             >
               {item.title}
             </MobileLink>
-          ))} */}
+          ))}
         </div>
       </SheetContent>
     </Sheet>
