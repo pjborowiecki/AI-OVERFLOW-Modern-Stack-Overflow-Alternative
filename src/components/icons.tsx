@@ -1,6 +1,7 @@
 import {
   ArrowLeftIcon,
   AvatarIcon,
+  ChevronRightIcon,
   DashboardIcon,
   GearIcon,
   ImageIcon,
@@ -10,6 +11,7 @@ type IconProps = React.HTMLAttributes<SVGElement>
 
 export const Icons = {
   arrowLeft: ArrowLeftIcon,
+  chevronRight: ChevronRightIcon,
   avatar: AvatarIcon,
   placeholder: ImageIcon,
   dashboard: DashboardIcon,
