@@ -53,6 +53,37 @@ export const siteConfig = {
       icon: "question",
     },
   ],
-  navItemsMobile: [],
+  navItemsMobile: [
+    {
+      title: "Home",
+      href: "/",
+      icon: "home",
+    },
+    {
+      title: "Community",
+      href: "/community",
+      icon: "community",
+    },
+    {
+      title: "Collections",
+      href: "/collections",
+      icon: "star",
+    },
+    {
+      title: "Find Jobs",
+      href: "/jobs",
+      icon: "suitcase",
+    },
+    {
+      title: "Tags",
+      href: "/tags",
+      icon: "tag",
+    },
+    {
+      title: "Ask a Question",
+      href: "/ask-question",
+      icon: "question",
+    },
+  ],
   navItemsFooter: [],
 }
