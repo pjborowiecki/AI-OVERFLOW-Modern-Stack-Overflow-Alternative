@@ -2,8 +2,6 @@ import Link from "next/link"
 import type { User } from "@prisma/client"
 import { getServerSession } from "next-auth"
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
 import { SidebarNavigation } from "@/components/nav/navigation-sidebar"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
@@ -23,7 +21,7 @@ export async function LeftSidebar() {
       ) : (
         <Link
           href="/signin"
-          className="flex w-full items-center justify-center gap-2 rounded-lg border-customLight-700 bg-customLight-700 p-4 text-[14px] font-semibold leading-[15.6px] tracking-wide text-customDark-400 shadow-none hover:opacity-50 dark:border-customDark-400 dark:bg-customDark-300 dark:text-customLight-900 lg:py-5"
+          className="flex h-[52px] w-full items-center justify-center gap-2 rounded-lg border-customLight-700 bg-customLight-700 p-4 text-[14px] font-semibold leading-[15.6px] tracking-wide text-customDark-400 shadow-none hover:opacity-50 dark:border-customDark-400 dark:bg-customDark-300 dark:text-customLight-900 lg:py-5"
         >
           <Icons.login
             className="h-5 w-5 invert dark:invert-0 lg:hidden"

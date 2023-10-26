@@ -16,7 +16,7 @@ export function SidebarNavigation({ userId }: SidebarNavigationProps) {
   const pathname = usePathname()
 
   return (
-    <nav className="flex flex-1 flex-col gap-4">
+    <nav className="flex flex-1 flex-col gap-3">
       {siteConfig.navItemsSidebar.map((item: NavItem) => {
         const active =
           (pathname.includes(item.href) && item.href.length > 1) ||
