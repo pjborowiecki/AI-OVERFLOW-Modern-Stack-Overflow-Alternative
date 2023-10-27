@@ -21,3 +21,8 @@ export interface JWTCallbackParams {
   profile?: Profile | undefined
   isNewUser?: boolean | undefined
 }
+
+export interface SearchFilter {
+  name: string
+  value: string
+}
