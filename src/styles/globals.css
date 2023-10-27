@@ -359,31 +359,31 @@
   }
 
   .block-controls span.block-type.paragraph {
-    @apply bg-[url("/assets/icons/editor/text-paragraph.svg")];
+    @apply bg-[url("/icons/editor/text-paragraph.svg")];
   }
 
   .block-controls span.block-type.h1 {
-    @apply bg-[url("/assets/icons/editor/type-h1.svg")];
+    @apply bg-[url("/icons/editor/type-h1.svg")];
   }
 
   .block-controls span.block-type.h2 {
-    @apply bg-[url("/assets/icons/editor/type-h2.svg")];
+    @apply bg-[url("/icons/editor/type-h2.svg")];
   }
 
   .block-controls span.block-type.quote {
-    @apply bg-[url("/assets/icons/editor/chat-square-quote.svg")];
+    @apply bg-[url("/icons/editor/chat-square-quote.svg")];
   }
 
   .block-controls span.block-type.ul {
-    @apply bg-[url("/assets/icons/editor/list-ul.svg")];
+    @apply bg-[url("/icons/editor/list-ul.svg")];
   }
 
   .block-controls span.block-type.ol {
-    @apply bg-[url("/assets/icons/editor/list-ol.svg")];
+    @apply bg-[url("/icons/editor/list-ol.svg")];
   }
 
   .block-controls span.block-type.code {
-    @apply bg-[url("/assets/icons/editor/code.svg")];
+    @apply bg-[url("/icons/editor/code.svg")];
   }
 
   .dropdown {
