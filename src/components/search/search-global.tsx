@@ -12,7 +12,7 @@ export function GlobalSearch() {
           placeholder="Search globally"
           value=""
           onChange={() => {}}
-          className="border-none bg-transparent text-[16px] font-normal leading-[22.rpx] shadow-none outline-none placeholder:text-customLight-400 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 dark:placeholder:text-customLight-500"
+          className="border-none bg-transparent text-[16px] font-normal leading-[22.4px] shadow-none outline-none placeholder:text-customLight-400 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 dark:placeholder:text-customLight-500"
         /> */}
       </div>
     </div>

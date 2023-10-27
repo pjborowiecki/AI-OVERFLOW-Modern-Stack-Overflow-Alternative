@@ -21,3 +21,7 @@ export function formatCount(count: number) {
     return count.toString()
   }
 }
+
+export function handleEditorError(error: Error): void {
+  console.error(error)
+}
