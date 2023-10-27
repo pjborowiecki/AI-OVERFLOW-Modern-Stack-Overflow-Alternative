@@ -21,7 +21,7 @@ export function RightSidebar() {
               <p className="text-[14px] font-medium leading-[18.2px] text-customDark-500 dark:text-customLight-700">
                 {question.title}
               </p>
-              <Icons.chevronRight className="h-5 w-5 invert dark:invert-0" />
+              <Icons.chevronRight className="h-5 min-h-[20px] w-5 min-w-[20px] invert dark:invert-0" />
             </Link>
           ))}
         </div>
