@@ -52,9 +52,14 @@ model User {
   resetPasswordToken            String?     @unique @map("reset_password_token")
   resetPasswordTokenExpiry      DateTime?   @map("reset_password_token_expiery")
   image                         String?
+
   createdAt                     DateTime    @default(now()) @map("created_at")
+  updatedAt                     DateTime?   @default(now()) @map("updated_at")
+
   accounts                      Account[]
   sessions                      Session[]
+  questions                     Question[]
+  answers                       Answer[]
 
   @@map("users")
 }
@@ -66,4 +71,54 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verification_tokens")
+}
+
+model Question {
+  id                            String      @id @default(cuid())
+  title                         String      @unique
+  explanation                   String
+  views                         Int         @default(0)
+  upvotes                       Int         @default(0)
+  downvotes                     Int         @default(0)
+  userId                        String      @map("user_id")
+
+  createdAt                     DateTime    @default(now()) @map("created_at")
+  updatedAt                     DateTime    @default(now()) @map("updated_at")
+
+  user                          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tags                          Tag[]
+  answers                       Answer[]
+
+  @@map("questions")
+}
+
+
+model Tag {
+  id                            String      @id @default(cuid())
+  name                          String      @unique
+  description                   String?
+
+  questionId                    String      @map("question_id")
+  createdAt                     DateTime    @default(now()) @map("created_at")
+
+  questions                     Question    @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@map("tags")
+}
+
+model Answer {
+  id                           String      @id @default(cuid())
+  userId                       String      @map("user_id")
+  questionId                   String      @map("question_id")
+  body                         String
+  upvotes                      Int         @default(0)
+  downvotes                    Int         @default(0)
+
+  createdAt                    DateTime    @default(now()) @map("created_at")
+  updatedAt                    DateTime    @default(now()) @map("updated_at")
+
+  question                     Question    @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  user                         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("answers")
 }
