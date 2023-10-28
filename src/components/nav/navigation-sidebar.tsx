@@ -18,10 +18,6 @@ export function SidebarNavigation({ userId }: SidebarNavigationProps) {
   return (
     <nav className="flex flex-1 flex-col gap-3">
       {siteConfig.navItemsSidebar.map((item: NavItem) => {
-        const active =
-          (pathname.includes(item.href) && item.href.length > 1) ||
-          pathname === item.href
-
         const Icon = Icons[item.icon as keyof typeof Icons]
 
         return (
@@ -32,7 +28,7 @@ export function SidebarNavigation({ userId }: SidebarNavigationProps) {
             }
             className={cn(
               "flex items-center justify-start gap-4 rounded-lg bg-transparent p-4 hover:bg-customLight-700 dark:hover:bg-customDark-300",
-              active
+              pathname === item.href
                 ? "primary-gradient text-customLight-900"
                 : "text-customDark-400 dark:text-customLight-900"
             )}
@@ -40,14 +36,14 @@ export function SidebarNavigation({ userId }: SidebarNavigationProps) {
             <Icon
               className={cn(
                 "h-5 min-h-[20px] w-5 min-w-[20px]",
-                active ? "" : "invert dark:invert-0"
+                item.href ? "" : "invert dark:invert-0"
               )}
               aria-hidden="true"
             />
             <span
               className={cn(
                 "text-[18px] font-medium leading-[25.2px] max-lg:hidden",
-                active && "font-bold leading-[140%]"
+                item.href && "font-bold leading-[140%]"
               )}
             >
               {item.title}

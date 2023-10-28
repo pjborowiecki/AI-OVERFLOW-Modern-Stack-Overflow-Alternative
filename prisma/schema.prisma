@@ -86,7 +86,7 @@ model Question {
   updatedAt                     DateTime    @default(now()) @map("updated_at")
 
   user                          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  tags                          Tag[]
+  tags                          QuestionTags[]
   answers                       Answer[]
 
   @@map("questions")
@@ -101,9 +101,18 @@ model Tag {
   questionId                    String      @map("question_id")
   createdAt                     DateTime    @default(now()) @map("created_at")
 
-  questions                     Question    @relation(fields: [questionId], references: [id], onDelete: Cascade)
-
+  questions                     QuestionTags[]
   @@map("tags")
+}
+
+model QuestionTags {
+  id                            String      @id @default(cuid())
+  questionId                    String      @map("question_id")
+  tagId                         String      @map("tag_id")
+  question                      Question?   @relation(fields: [questionId], references: [id])
+  tag                           Tag?        @relation(fields: [tagId], references: [id])
+
+  @@map("question_tags")
 }
 
 model Answer {
