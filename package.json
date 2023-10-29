@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "saasy-land-next-13-starters-with-authentication-and-database-implemented",
-  "description": "Starter templates for Next.js 13 full-stack projects. Built with Tailwind CSS, ShadCn, authentication, and database. Several branches contain several different configurations, including serverless databases like PostgreSQL with Neon, or MySQL with PlanetScale, Drizzle ORM, Prisma ORM v.5 (serverless-compatible), but also MongoDB and Supabase.",
+  "name": "ai-overflow",
+  "description": "Modern, AI-powered, community-driven Stack Overflow alternative for developers. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web dev, mobile app development, algorithms, data structures, and more. Built with Next 13, Next-Auth, Prisma 5, Postgres @ Neon, TailwindCSS, ShadCn-UI, Lexical, and more.",
   "version": "0.1.0",
   "license": "MIT",
   "author": {
@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pjborowiecki/SAASY-LAND-Next-13-Starters-With-Authentication-And-Database-Implemented"
+    "url": "https://github.com/pjborowiecki/AI-OVERFLOW-Modern-Stack-Overflow-Alternative"
   },
   "bugs": {
-    "url": "https://github.com/pjborowiecki/SAASY-LAND-Next-13-Starters-With-Authentication-And-Database-Implemented/issues"
+    "url": "https://github.com/pjborowiecki/AI-Overflow-Modern-Stack-Overflow-Alternative/issues"
   },
   "scripts": {
     "dev": "next dev --experimental-https",
     "build": "next build",
     "start": "next start",
-    "postinstall": "pnpm prisma generate && pnpm prisma migrate dev",
+    "postinstall": "pnpm prisma generate",
     "db:generate": "pnpm prisma generate",
     "db:migrate": "pnpm prisma migrate dev",
     "db:push": "pnpm prisma db push",
