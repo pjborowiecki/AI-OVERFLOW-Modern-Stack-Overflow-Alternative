@@ -1,4 +1,4 @@
-import { sendEmailAction } from "@/actions/email"
+import { sendEmail } from "@/actions/email"
 import { prisma } from "@/db/prisma"
 import { env } from "@/env.mjs"
 import { PrismaAdapter } from "@auth/prisma-adapter"
@@ -48,7 +48,7 @@ export const authOptions: AuthOptions = {
         url: string
       }) {
         try {
-          const emailSent = await sendEmailAction({
+          const emailSent = await sendEmail({
             from: env.RESEND_EMAIL_FROM,
             to: [identifier],
             subject: `${siteConfig.name} magic link sign in`,

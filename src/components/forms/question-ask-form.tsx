@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { createQuestionAction } from "@/actions/question"
+import { createQuestion } from "@/actions/question"
 import { questionSchema } from "@/validations/question"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TRANSFORMERS } from "@lexical/markdown"

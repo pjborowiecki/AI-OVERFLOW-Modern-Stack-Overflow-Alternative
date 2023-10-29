@@ -1,6 +1,7 @@
 "use server"
 
 import crypto from "crypto"
+import { getUserByEmail } from "@/actions/user"
 import { prisma } from "@/db/prisma"
 import { env } from "@/env.mjs"
 import {
@@ -11,9 +12,7 @@ import {
 import { resend } from "@/config/email"
 import { EmailVerificationEmail } from "@/components/emails/email-verification-email"
 
-import { getUserByEmailAction } from "./user"
-
-export async function sendEmailAction(
+export async function sendEmail(
   payload: CreateEmailOptions,
   options?: CreateEmailRequestOptions | undefined
 ) {
@@ -22,8 +21,8 @@ export async function sendEmailAction(
   return data
 }
 
-export async function resendEmailVerificationLinkAction(email: string) {
-  const user = await getUserByEmailAction(email)
+export async function resendEmailVerificationLink(email: string) {
+  const user = await getUserByEmail(email)
   if (!user) return "not-found"
 
   const emailVerificationToken = crypto.randomBytes(32).toString("base64url")
@@ -35,7 +34,7 @@ export async function resendEmailVerificationLinkAction(email: string) {
       emailVerificationToken,
     },
   })
-  const emailSent = await sendEmailAction({
+  const emailSent = await sendEmail({
     from: env.RESEND_EMAIL_FROM,
     to: [email],
     subject: "Verify your email address",
@@ -45,8 +44,8 @@ export async function resendEmailVerificationLinkAction(email: string) {
   return "success"
 }
 
-export async function checkIfEmailVerifiedAction(email: string) {
-  const user = await getUserByEmailAction(email)
+export async function checkIfEmailVerified(email: string) {
+  const user = await getUserByEmail(email)
   if (user?.emailVerified instanceof Date) {
     return true
   } else {

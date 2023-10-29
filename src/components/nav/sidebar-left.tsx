@@ -2,11 +2,10 @@ import Link from "next/link"
 import type { User } from "@prisma/client"
 import { getServerSession } from "next-auth"
 
+import { SignOutButton } from "@/components/auth/signout-button"
+import { Icons } from "@/components/icons"
 import { SidebarNavigation } from "@/components/nav/navigation-sidebar"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
-
-import { SignOutButton } from "../auth/signout-button"
-import { Icons } from "../icons"
 
 export async function LeftSidebar() {
   const session = await getServerSession(authOptions)

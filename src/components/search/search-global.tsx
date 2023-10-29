@@ -1,6 +1,5 @@
+import { Input } from "@/components/ui/input"
 import { Icons } from "@/components/icons"
-
-import { Input } from "../ui/input"
 
 export function GlobalSearch() {
   return (

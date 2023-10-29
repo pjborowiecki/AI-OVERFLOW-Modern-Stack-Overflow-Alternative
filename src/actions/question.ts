@@ -3,11 +3,11 @@
 import { prisma } from "@/db/prisma"
 import { type Question } from "@prisma/client"
 
-export async function createQuestionAction({ title, explanation, userId }) {
+export async function createQuestion({ title, explanation, userId }) {
   return await prisma.question.create({})
 }
 
-export async function getAllQuestionsAction(): Promise<
+export async function getAllQuestions(): Promise<
   Question[] | null | undefined
 > {
   return await prisma.question.findMany()

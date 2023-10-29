@@ -1,10 +1,10 @@
 "use server"
 
 import crypto from "crypto"
-import { sendEmailAction } from "@/actions/email"
+import { sendEmail } from "@/actions/email"
 import {
-  getUserByEmailAction,
-  getUserByResetPasswordTokenAction,
+  getUserByEmail,
+  getUserByResetPasswordToken,
 } from "@/actions/user"
 import { prisma } from "@/db/prisma"
 import { env } from "@/env.mjs"
@@ -13,11 +13,11 @@ import bcrypt from "bcrypt"
 import { EmailVerificationEmail } from "@/components/emails/email-verification-email"
 import { ResetPasswordEmail } from "@/components/emails/reset-password-email"
 
-export async function signUpWithPasswordAction(
+export async function signUpWithPassword(
   email: string,
   password: string
 ) {
-  const user = await getUserByEmailAction(email)
+  const user = await getUserByEmail(email)
   if (user) return "exists"
 
   const passwordHash = await bcrypt.hash(password, 10)
@@ -40,7 +40,7 @@ export async function signUpWithPasswordAction(
       emailVerificationToken,
     },
   })
-  const emailSent = await sendEmailAction({
+  const emailSent = await sendEmail({
     from: env.RESEND_EMAIL_FROM,
     to: [email],
     subject: "Verify your email address",
@@ -51,8 +51,8 @@ export async function signUpWithPasswordAction(
   return "success"
 }
 
-export async function resetPasswordAction(email: string) {
-  const user = await getUserByEmailAction(email)
+export async function resetPassword(email: string) {
+  const user = await getUserByEmail(email)
   if (!user) return "not-found"
 
   const today = new Date()
@@ -68,7 +68,7 @@ export async function resetPasswordAction(email: string) {
         resetPasswordTokenExpiry,
       },
     })
-    const emailSent = await sendEmailAction({
+    const emailSent = await sendEmail({
       from: env.RESEND_EMAIL_FROM,
       to: [email],
       subject: "Reset your password",
@@ -83,11 +83,11 @@ export async function resetPasswordAction(email: string) {
   }
 }
 
-export async function updatePasswordAction(
+export async function updatePassword(
   resetPasswordToken: string,
   password: string
 ) {
-  const user = await getUserByResetPasswordTokenAction(resetPasswordToken)
+  const user = await getUserByResetPasswordToken(resetPasswordToken)
   if (!user) return "not-found"
 
   const resetPasswordExpiry = user.resetPasswordTokenExpiry

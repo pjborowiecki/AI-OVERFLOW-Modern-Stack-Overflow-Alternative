@@ -3,8 +3,8 @@ await import("./src/env.mjs")
 
 const nextConfig = {
   reactStrictMode: true,
-  typescript: { ignoreBuildErrors: true },
   experimental: { serverActions: true },
+  typescript: { ignoreBuildErrors: true },
   images: {
     remotePatterns: [
       {
@@ -14,7 +14,6 @@ const nextConfig = {
         pathname: "/u/**",
       },
     ],
-    domains: ["uploadthing.com"],
   },
 }
 
