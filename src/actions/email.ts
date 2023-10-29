@@ -2,7 +2,7 @@
 
 import crypto from "crypto"
 import { getUserByEmail } from "@/actions/user"
-import { prisma } from "@/db/prisma"
+import { prisma } from "@/db"
 import { env } from "@/env.mjs"
 import {
   type CreateEmailOptions,
@@ -16,39 +16,58 @@ export async function sendEmail(
   payload: CreateEmailOptions,
   options?: CreateEmailRequestOptions | undefined
 ) {
-  const data = await resend.emails.send(payload, options)
-  console.log("Email sent successfully")
-  return data
+  try {
+    const data = await resend.emails.send(payload, options)
+    console.log("Email sent successfully")
+    return data
+  } catch (error) {
+    console.error(error)
+    throw new Error("Error sending email")
+  }
 }
 
-export async function resendEmailVerificationLink(email: string) {
-  const user = await getUserByEmail(email)
-  if (!user) return "not-found"
+export async function resendEmailVerificationLink(
+  email: string
+): Promise<"not-found" | "success" | null> {
+  try {
+    const user = await getUserByEmail(email)
+    if (!user) return "not-found"
 
-  const emailVerificationToken = crypto.randomBytes(32).toString("base64url")
-  const userUpdated = await prisma.user.update({
-    where: {
-      email,
-    },
-    data: {
-      emailVerificationToken,
-    },
-  })
-  const emailSent = await sendEmail({
-    from: env.RESEND_EMAIL_FROM,
-    to: [email],
-    subject: "Verify your email address",
-    react: EmailVerificationEmail({ email, emailVerificationToken }),
-  })
-  if (!userUpdated || !emailSent) return null
-  return "success"
+    const emailVerificationToken = crypto.randomBytes(32).toString("base64url")
+    const userUpdated = await prisma.user.update({
+      where: {
+        email,
+      },
+      data: {
+        emailVerificationToken,
+      },
+    })
+    const emailSent = await sendEmail({
+      from: env.RESEND_EMAIL_FROM,
+      to: [email],
+      subject: "Verify your email address",
+      react: EmailVerificationEmail({ email, emailVerificationToken }),
+    })
+    if (!userUpdated || !emailSent) return null
+    return "success"
+  } catch (error) {
+    console.error(error)
+    throw new Error("Error resending email verification link")
+  } finally {
+    await prisma.$disconnect()
+  }
 }
 
-export async function checkIfEmailVerified(email: string) {
-  const user = await getUserByEmail(email)
-  if (user?.emailVerified instanceof Date) {
-    return true
-  } else {
-    return false
+export async function checkIfEmailVerified(email: string): Promise<boolean> {
+  try {
+    const user = await getUserByEmail(email)
+    if (user?.emailVerified instanceof Date) {
+      return true
+    } else {
+      return false
+    }
+  } catch (error) {
+    console.error(error)
+    throw new Error("Error checking if email verified")
   }
 }

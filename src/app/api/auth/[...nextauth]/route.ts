@@ -1,5 +1,5 @@
 import { sendEmail } from "@/actions/email"
-import { prisma } from "@/db/prisma"
+import { prisma } from "@/db"
 import { env } from "@/env.mjs"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import bcrypt from "bcrypt"
@@ -82,9 +82,8 @@ export const authOptions: AuthOptions = {
           String(user.passwordHash)
         )
 
-        if (!passwordIsValid) return null
-
-        return user
+        if (passwordIsValid) return user
+        return null
       },
     }),
   ],

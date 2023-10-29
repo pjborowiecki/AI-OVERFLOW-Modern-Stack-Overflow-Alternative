@@ -3,7 +3,7 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { createQuestion } from "@/actions/question"
-import { questionSchema } from "@/validations/question"
+import { createQuestionSchema } from "@/validations/question"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TRANSFORMERS } from "@lexical/markdown"
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin"
@@ -38,16 +38,16 @@ import { CodeHighlightPlugin } from "@/components/editor/plugins/code-highlight-
 import { ToolbarPlugin } from "@/components/editor/plugins/toolbar-plugin"
 import { Icons } from "@/components/icons"
 
-interface QuestionAskFormProps {
+interface QuestionCreateFormProps {
   userId: string | undefined
 }
 
-export function QuestionAskForm({ userId }: QuestionAskFormProps) {
+export function QuestionAskForm({ userId }: QuestionCreateFormProps) {
   const [isPending, startTransition] = React.useTransition()
   const router = useRouter()
 
-  const form = useForm<z.infer<typeof questionSchema>>({
-    resolver: zodResolver(questionSchema),
+  const form = useForm<z.infer<typeof createQuestionSchema>>({
+    resolver: zodResolver(createQuestionSchema),
     defaultValues: {
       title: "",
       explanation: "",
@@ -55,12 +55,16 @@ export function QuestionAskForm({ userId }: QuestionAskFormProps) {
     },
   })
 
-  function onSubmit(formData: z.infer<typeof questionSchema>) {
+  function onSubmit(formData: z.infer<typeof createQuestionSchema>) {
     startTransition(async () => {
       try {
-        // TODO: Implement the logic here
+        await createQuestion(
+          userId as string,
+          formData.title,
+          formData.explanation,
+          formData.tags
+        )
 
-        form.reset()
         toast.success("Question posted successfully")
         router.push("/")
       } catch (error) {
@@ -93,7 +97,7 @@ export function QuestionAskForm({ userId }: QuestionAskFormProps) {
           ).catch((error) => {
             console.error(error)
           })
-        } else if (field.value.length > 5) {
+        } else if (field.value.length >= 5) {
           form.setError("tags", {
             type: "required",
             message: "You can add up to 5 tags only",
