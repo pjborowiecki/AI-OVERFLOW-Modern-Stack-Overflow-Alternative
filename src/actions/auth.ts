@@ -51,8 +51,6 @@ export async function signUpWithPassword(
   } catch (error) {
     console.error(error)
     throw new Error("Error signing up with password")
-  } finally {
-    await prisma.$disconnect()
   }
 }
 
@@ -88,8 +86,6 @@ export async function resetPassword(
   } catch (error) {
     console.error(error)
     return null
-  } finally {
-    await prisma.$disconnect()
   }
 }
 
@@ -123,7 +119,5 @@ export async function updatePassword(
   } catch (error) {
     console.error(error)
     throw new Error("Error updating password")
-  } finally {
-    await prisma.$disconnect()
   }
 }

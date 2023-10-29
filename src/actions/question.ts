@@ -30,8 +30,6 @@ export async function createQuestion(
   } catch (error) {
     console.error(error)
     throw new Error("Error creating question")
-  } finally {
-    await prisma.$disconnect()
   }
 }
 
@@ -55,8 +53,6 @@ export async function getAllQuestionsWithTagAndAuthorData() {
   } catch (error) {
     console.error(error)
     throw new Error("Error getting all questions")
-  } finally {
-    await prisma.$disconnect()
   }
 }
 
@@ -68,8 +64,6 @@ export async function getQuestionById(id: string): Promise<Question | null> {
   } catch (error) {
     console.error(error)
     throw new Error("Error getting question by id")
-  } finally {
-    await prisma.$disconnect()
   }
 }
 
@@ -83,8 +77,6 @@ export async function getAllQuestionsByUserId(
   } catch (error) {
     console.error(error)
     throw new Error("Error getting all questions by user id")
-  } finally {
-    await prisma.$disconnect()
   }
 }
 
@@ -98,7 +90,5 @@ export async function getAllQuestionsByTagId(
   } catch (error) {
     console.error(error)
     throw new Error("Error getting all questions by tag id")
-  } finally {
-    await prisma.$disconnect()
   }
 }

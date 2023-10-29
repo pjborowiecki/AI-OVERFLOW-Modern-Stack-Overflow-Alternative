@@ -53,8 +53,6 @@ export async function resendEmailVerificationLink(
   } catch (error) {
     console.error(error)
     throw new Error("Error resending email verification link")
-  } finally {
-    await prisma.$disconnect()
   }
 }
 

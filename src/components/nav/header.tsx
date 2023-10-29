@@ -26,7 +26,7 @@ export async function Header() {
   const user = session ? (session.user as User) : null
 
   return (
-    <header className="fixed z-50 flex w-full items-center justify-between gap-5 bg-customLight-900 p-6 shadow-customDark-300 dark:bg-customDark-200 dark:shadow-none sm:px-12">
+    <header className="fixed z-50 flex w-full items-center justify-between gap-5 overflow-hidden bg-customLight-900 p-6 shadow-customDark-300 dark:bg-customDark-200 dark:shadow-none sm:px-12">
       <Link
         href="/"
         className="flex items-center justify-center gap-2 text-lg font-bold tracking-wide transition-all duration-300 ease-in-out hover:text-customOrange-400"

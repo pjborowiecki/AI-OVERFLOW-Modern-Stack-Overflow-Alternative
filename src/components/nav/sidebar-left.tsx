@@ -12,7 +12,7 @@ export async function LeftSidebar() {
   const user = session ? (session.user as User) : null
 
   return (
-    <aside className="custom-scrollbar sticky left-0 top-0 flex flex-col justify-between overflow-hidden overflow-y-auto border-r border-customLight-800 bg-customLight-900 p-6 pt-36 shadow-customDark-300  dark:border-customDark-300 dark:bg-customDark-200 dark:shadow-none max-sm:hidden lg:w-[266px]">
+    <aside className="custom-scrollbar sticky left-0 top-0 flex flex-col justify-between border-r border-customLight-800 bg-customLight-900 p-6 pt-36 shadow-customDark-300  dark:border-customDark-300 dark:bg-customDark-200 dark:shadow-none max-sm:hidden lg:w-[266px]">
       <SidebarNavigation userId={user?.id} />
 
       {session ? (

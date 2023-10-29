@@ -13,8 +13,6 @@ export async function getUserByEmail(email: string): Promise<User | null> {
   } catch (error) {
     console.error(error)
     throw new Error("Error getting user by email")
-  } finally {
-    await prisma.$disconnect()
   }
 }
 
@@ -30,8 +28,6 @@ export async function getUserByResetPasswordToken(
   } catch (error) {
     console.error(error)
     throw new Error("Error getting user by reset password token")
-  } finally {
-    await prisma.$disconnect()
   }
 }
 
@@ -47,7 +43,5 @@ export async function getUserByEmailVerificationToken(
   } catch (error) {
     console.error(error)
     throw new Error("Error getting user by email verification token")
-  } finally {
-    await prisma.$disconnect()
   }
 }

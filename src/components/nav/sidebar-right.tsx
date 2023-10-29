@@ -6,7 +6,7 @@ import { TagBadge } from "@/components/tag-badge"
 
 export function RightSidebar() {
   return (
-    <aside className="custom-scrollbar sticky right-0 top-0 flex w-[350px] flex-col gap-16 overflow-y-auto border-l border-customLight-800 bg-customLight-900 p-6 pt-36 shadow-customDark-300 dark:border-customDark-300 dark:bg-customDark-200 dark:shadow-none max-xl:hidden">
+    <aside className="custom-scrollbar sticky right-0 top-0 flex w-[350px] flex-col gap-16 border-l border-customLight-800 bg-customLight-900 p-6 pt-36 shadow-customDark-300 dark:border-customDark-300 dark:bg-customDark-200 dark:shadow-none max-xl:hidden">
       <div>
         <h3 className="text-[20px] font-bold leading-[26px] text-customDark-200 dark:text-customLight-900">
           Top Questions
