@@ -2,14 +2,19 @@ import Link from "next/link"
 
 import { Badge } from "@/components/ui/badge"
 
-interface TagProps {
+interface TagBadgeProps {
   id: string
   name: string
   totalQuestions?: number
   showCount?: boolean
 }
 
-export function Tag({ id, name, totalQuestions, showCount }: TagProps) {
+export function TagBadge({
+  id,
+  name,
+  totalQuestions,
+  showCount,
+}: TagBadgeProps) {
   return (
     <div className="flex items-center justify-between gap-2">
       <Link href={`/tags/${id}`}>

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { sampleQuestions } from "@/data"
+import { getAllQuestionsWithTagAndAuthorData } from "@/actions/question"
 import { homePageFilters } from "@/data/filters"
 
 import { cn } from "@/lib/utils"
@@ -10,7 +10,9 @@ import { SearchFilters } from "@/components/search/search-filters"
 import { SearchFiltersAlt } from "@/components/search/search-filters-alt"
 import { LocalSearch } from "@/components/search/search-local"
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const questions = await getAllQuestionsWithTagAndAuthorData()
+
   return (
     <div className="flex flex-col gap-8">
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -45,8 +47,8 @@ export default function LandingPage() {
       <SearchFiltersAlt />
 
       <div className="mt-8 flex w-full flex-col gap-6">
-        {sampleQuestions.length > 0 ? (
-          sampleQuestions.map((question) => (
+        {questions && questions.length > 0 ? (
+          questions.map((question) => (
             <QuestionCard key={question.id} question={question} />
           ))
         ) : (

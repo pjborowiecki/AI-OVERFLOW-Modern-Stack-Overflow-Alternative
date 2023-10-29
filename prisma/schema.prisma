@@ -45,7 +45,7 @@ model User {
   name                          String?
   surname                       String?
   username                      String?     @unique
-  email                         String?     @unique
+  email                         String      @unique
   emailVerified                 DateTime?   @map("email_verified")
   emailVerificationToken        String?     @unique @map("email_verification_token")
   passwordHash                  String?     @map("password_hash")

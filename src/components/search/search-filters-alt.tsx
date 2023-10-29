@@ -15,7 +15,7 @@ export function SearchFiltersAlt() {
           key={filter.value}
           onClick={() => {}}
           className={cn(
-            "rounded-lg bg-customLight-800 px-6 py-3 text-[14px] font-medium capitalize leading-[18.2px] text-customLight-500 shadow-none hover:opacity-50 dark:bg-customDark-300",
+            "rounded-lg bg-customLight-800 px-6 py-3 text-[14px] font-medium capitalize leading-[18.2px] text-customLight-500 shadow-none hover:opacity-80 dark:bg-customDark-300",
             active === filter.value &&
               "bg-customOrange-100 text-customOrange-500"
           )}

@@ -9,7 +9,7 @@ export function SignOutButton() {
   return (
     <Button
       aria-label="Sign Out"
-      className="flex h-[52px] w-full items-center justify-center gap-2 rounded-lg border-customLight-700 bg-customLight-700 p-4 text-[14px] font-semibold leading-[15.6px] tracking-wide text-customDark-400 shadow-none hover:opacity-50 dark:border-customDark-400 dark:bg-customDark-300 dark:text-customLight-900 lg:py-5"
+      className="flex h-[52px] w-full items-center justify-center gap-2 rounded-lg border-customLight-700 bg-customLight-700/90 p-4 text-[14px] font-semibold leading-[15.6px] tracking-wide text-customDark-400 shadow-none hover:opacity-50 dark:border-customDark-400 dark:bg-customDark-300 dark:text-customLight-900 lg:py-5"
       onClick={() =>
         void signOut({
           callbackUrl: "/",

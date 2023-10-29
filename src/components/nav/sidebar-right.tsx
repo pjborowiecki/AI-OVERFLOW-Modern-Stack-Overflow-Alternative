@@ -2,7 +2,7 @@ import Link from "next/link"
 import { hotQuestions, popularTags } from "@/data"
 
 import { Icons } from "@/components/icons"
-import { Tag } from "@/components/tag"
+import { TagBadge } from "@/components/tag-badge"
 
 export function RightSidebar() {
   return (
@@ -32,7 +32,7 @@ export function RightSidebar() {
         </h3>
         <div className="mt-7 flex w-full flex-col gap-3">
           {popularTags.map((tag) => (
-            <Tag
+            <TagBadge
               key={tag.id}
               id={tag.id}
               name={tag.name}

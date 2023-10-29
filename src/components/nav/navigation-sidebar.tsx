@@ -36,7 +36,7 @@ export function SidebarNavigation({ userId }: SidebarNavigationProps) {
             <Icon
               className={cn(
                 "h-5 min-h-[20px] w-5 min-w-[20px]",
-                item.href ? "" : "invert dark:invert-0"
+                item.href ? "invert dark:invert-0" : ""
               )}
               aria-hidden="true"
             />

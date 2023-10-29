@@ -1,6 +1,5 @@
 import * as React from "react"
 
-import { Footer } from "@/components/nav/footer"
 import { Header } from "@/components/nav/header"
 import { LeftSidebar } from "@/components/nav/sidebar-left"
 import { RightSidebar } from "@/components/nav/sidebar-right"
@@ -20,7 +19,6 @@ export default function LandingLayout({ children }: LandingLayoutProps) {
         </main>
         <RightSidebar />
       </div>
-      {/* <Footer /> */}
     </div>
   )
 }

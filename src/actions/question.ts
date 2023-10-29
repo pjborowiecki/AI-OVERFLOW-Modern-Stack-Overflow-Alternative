@@ -1,5 +1,6 @@
 "use server"
 
+import { revalidatePath } from "next/cache"
 import { prisma } from "@/db"
 import { type Question } from "@prisma/client"
 
@@ -34,9 +35,23 @@ export async function createQuestion(
   }
 }
 
-export async function getAllQuestions(): Promise<Question[] | null> {
+export async function getAllQuestionsWithTagAndAuthorData() {
   try {
-    return await prisma.question.findMany()
+    return await prisma.question.findMany({
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+          },
+        },
+        tags: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    })
+    revalidatePath("/")
   } catch (error) {
     console.error(error)
     throw new Error("Error getting all questions")

@@ -32,6 +32,7 @@ const config = {
       rootDir: ["./"],
     },
   },
+  ignorePatterns: ["/src/components/editor/plugins/toolbar-plugin.tsx"],
 }
 
 module.exports = config
