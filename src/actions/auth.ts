@@ -2,10 +2,7 @@
 
 import crypto from "crypto"
 import { sendEmail } from "@/actions/email"
-import {
-  getUserByEmail,
-  getUserByResetPasswordToken,
-} from "@/actions/user"
+import { getUserByEmail, getUserByResetPasswordToken } from "@/actions/user"
 import { prisma } from "@/db/prisma"
 import { env } from "@/env.mjs"
 import bcrypt from "bcrypt"
@@ -13,10 +10,7 @@ import bcrypt from "bcrypt"
 import { EmailVerificationEmail } from "@/components/emails/email-verification-email"
 import { ResetPasswordEmail } from "@/components/emails/reset-password-email"
 
-export async function signUpWithPassword(
-  email: string,
-  password: string
-) {
+export async function signUpWithPassword(email: string, password: string) {
   const user = await getUserByEmail(email)
   if (user) return "exists"
 

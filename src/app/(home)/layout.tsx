@@ -20,7 +20,7 @@ export default function LandingLayout({ children }: LandingLayoutProps) {
         </main>
         <RightSidebar />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
