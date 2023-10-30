@@ -4,6 +4,6 @@ Modern, AI-powered, community-driven Stack Overflow alternative for developers. 
 
 **Work in progress**
 
-![public/images/screenshot](./public/images/screenshots/screenshot1.png)
+![public/screenshots/screenshot1](./public/screenshots/screenshot1.png)
 
-![public/images/screenshot2](./public/images/screenshots/screenshot2.png)
+![public/screenshots/screenshot2](./public/screenshots/screenshot2.png)

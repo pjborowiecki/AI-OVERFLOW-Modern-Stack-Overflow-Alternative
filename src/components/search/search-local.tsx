@@ -25,13 +25,11 @@ export function LocalSearch({
       {iconPosition === "left" && (
         <Icons.search className="h-6 min-h-[24px] w-6 min-w-[24px] cursor-pointer" />
       )}
-      {/* <Input
+      <Input
         type="text"
         placeholder={placeholder}
-        value=""
-        onChange={() => {}}
         className="border-none bg-transparent text-[16px] font-normal leading-[22.4px] shadow-none outline-none placeholder:text-customLight-400 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 dark:placeholder:text-customLight-500"
-      /> */}
+      />
       {iconPosition === "right" && (
         <Icons.search className="h-6 min-h-[24px] w-6 min-w-[24px] cursor-pointer" />
       )}

@@ -19,7 +19,7 @@ export function NoResults({
   return (
     <div className="flex h-full w-full flex-col items-center justify-center gap-6 py-8 sm:py-16 md:py-32">
       <Image
-        src="/assets/images/light-illustration.png"
+        src="/images/light-illustration.png"
         width={270}
         height={200}
         alt="No results found illustration"
@@ -27,7 +27,7 @@ export function NoResults({
       />
 
       <Image
-        src="/assets/images/dark-illustration.png"
+        src="/images/dark-illustration.png"
         width={270}
         height={200}
         alt="No results found illustration"

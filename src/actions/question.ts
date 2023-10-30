@@ -2,25 +2,22 @@
 
 import { revalidatePath } from "next/cache"
 import { prisma } from "@/db"
+import { type CreateQuestionParams, type GetAllQuestionsParams } from "@/types"
 import { type Question } from "@prisma/client"
 
 export async function createQuestion(
-  userId: string,
-
-  title: string,
-  explanation: string,
-  tags: string[]
+  params: CreateQuestionParams
 ): Promise<Question | null> {
   try {
     return await prisma.question.create({
       data: {
-        title,
-        explanation,
+        title: params.title,
+        explanation: params.explanation,
         user: {
-          connect: { id: userId },
+          connect: { id: params.userId },
         },
         tags: {
-          connectOrCreate: tags.map((tagName) => ({
+          connectOrCreate: params.tags.map((tagName) => ({
             where: { name: tagName },
             create: { name: tagName },
           })),
@@ -33,7 +30,9 @@ export async function createQuestion(
   }
 }
 
-export async function getAllQuestionsWithTagAndAuthorData() {
+export async function getAllQuestionsWithTagAndAuthorData(
+  params: GetAllQuestionsParams
+) {
   try {
     return await prisma.question.findMany({
       include: {
@@ -46,7 +45,7 @@ export async function getAllQuestionsWithTagAndAuthorData() {
         tags: true,
       },
       orderBy: {
-        createdAt: "desc",
+        createdAt: params.sort || "desc",
       },
     })
     revalidatePath("/")

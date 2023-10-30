@@ -1,6 +1,7 @@
 "use server"
 
 import { prisma } from "@/db"
+import { type GetAllUsersParams } from "@/types"
 import { type User } from "@prisma/client"
 
 export async function getUserByEmail(email: string): Promise<User | null> {
@@ -43,5 +44,22 @@ export async function getUserByEmailVerificationToken(
   } catch (error) {
     console.error(error)
     throw new Error("Error getting user by email verification token")
+  }
+}
+
+export async function getAllUsers(
+  params: GetAllUsersParams
+): Promise<Pick<User, "id" | "email" | "image">[]> {
+  try {
+    return await prisma.user.findMany({
+      select: {
+        id: true,
+        email: true,
+        image: true,
+      },
+    })
+  } catch (error) {
+    console.error(error)
+    throw new Error("Error getting all users")
   }
 }

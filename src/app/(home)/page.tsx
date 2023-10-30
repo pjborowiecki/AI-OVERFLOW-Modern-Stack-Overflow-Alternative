@@ -11,7 +11,9 @@ import { SearchFiltersAlt } from "@/components/search/search-filters-alt"
 import { LocalSearch } from "@/components/search/search-local"
 
 export default async function LandingPage() {
-  const questions = await getAllQuestionsWithTagAndAuthorData()
+  const questions = await getAllQuestionsWithTagAndAuthorData({
+    sort: "desc",
+  })
 
   return (
     <div className="flex flex-col gap-8">

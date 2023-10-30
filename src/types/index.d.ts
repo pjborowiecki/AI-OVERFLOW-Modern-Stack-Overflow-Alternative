@@ -26,3 +26,47 @@ export interface SearchFilter {
   name: string
   value: string
 }
+
+export interface SearchParams {
+  query: string | null
+  type: string | null
+}
+
+export interface RecommendationParams {
+  userId: string
+  page?: number
+  pageSize?: number
+  searchQuery?: string
+}
+
+export interface JobFilterParams {
+  query: string
+  page: string
+}
+
+export interface GetAllQuestionsParams {
+  page?: number
+  pageSize?: number
+  searchQuery?: string
+  filter?: string
+  sort?: "desc" | "asc"
+}
+
+export interface CreateQuestionParams {
+  userId: string
+  title: string
+  explanation: string
+  tags: string[]
+}
+
+export interface GetAllUsersParams {
+  page?: number
+  pageSize?: number
+  filter?: string
+  searchQuery?: string
+}
+
+export interface GetTopTagsByUserParams {
+  userId: string
+  limit?: number
+}

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import { getServerSession } from "next-auth"
 
-import { QuestionAskForm } from "@/components/forms/question-create-form"
+import { QuestionCreateForm } from "@/components/forms/question-create-form"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
 export default async function AskQuestionPage() {
@@ -17,7 +17,7 @@ export default async function AskQuestionPage() {
         Ask a Question
       </h1>
       <div>
-        <QuestionAskForm userId={session.user.id} />
+        <QuestionCreateForm userId={session.user.id} />
       </div>
     </div>
   )

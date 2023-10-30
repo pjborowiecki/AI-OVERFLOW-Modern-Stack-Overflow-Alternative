@@ -42,7 +42,7 @@ interface QuestionCreateFormProps {
   userId: string | undefined
 }
 
-export function QuestionAskForm({ userId }: QuestionCreateFormProps) {
+export function QuestionCreateForm({ userId }: QuestionCreateFormProps) {
   const [isPending, startTransition] = React.useTransition()
   const router = useRouter()
 
@@ -58,14 +58,14 @@ export function QuestionAskForm({ userId }: QuestionCreateFormProps) {
   function onSubmit(formData: z.infer<typeof createQuestionSchema>) {
     startTransition(async () => {
       try {
-        await createQuestion(
-          userId as string,
-          formData.title,
-          formData.explanation,
-          formData.tags
-        )
+        await createQuestion({
+          userId: userId as string,
+          title: formData.title,
+          explanation: formData.explanation,
+          tags: formData.tags,
+        })
 
-        toast.success("Question posted successfully")
+        toast.success("Your question is on! 🎉")
         router.push("/")
       } catch (error) {
         toast.error("Something went wrong. Try again")
@@ -74,6 +74,8 @@ export function QuestionAskForm({ userId }: QuestionCreateFormProps) {
     })
   }
 
+  // TODO: Check if tag already added (case insensitive).
+  // Prevent from adding the same tag twice
   const handleInputKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
     field: ControllerRenderProps<

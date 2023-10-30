@@ -72,7 +72,7 @@ export async function Header() {
                     <p className="text-sm font-medium leading-none">
                       {session.user?.name}
                     </p>
-                    <p className="text-xs leading-none text-muted-foreground">
+                    <p className="truncate text-xs leading-none text-muted-foreground">
                       {session.user?.email}
                     </p>
                   </div>

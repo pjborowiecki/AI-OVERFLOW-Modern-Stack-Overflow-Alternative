@@ -5,9 +5,9 @@ export const answerFilters = [
   { name: "Oldest", value: "old" },
 ]
 
-export const userFilters = [
-  { name: "New Users", value: "new_users" },
-  { name: "Old Users", value: "old_users" },
+export const memberFilters = [
+  { name: "New Members", value: "new_members" },
+  { name: "Long-Term Members", value: "long_term_members" },
   { name: "Top Contributors", value: "top_contributors" },
 ]
 
