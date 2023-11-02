@@ -1,7 +1,7 @@
 import "@/styles/globals.css"
 
 import * as React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { env } from "@/env.mjs"
 import { Toaster } from "sonner"
 
@@ -11,6 +11,17 @@ import { AuthProvider } from "@/providers/auth-provider"
 import { ThemeProvider } from "@/providers/theme-provider"
 import { cn } from "@/lib/utils"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
@@ -31,10 +42,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
   openGraph: {
     type: "website",
     locale: "en_US",

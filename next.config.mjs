@@ -3,8 +3,6 @@ await import("./src/env.mjs")
 
 const nextConfig = {
   reactStrictMode: true,
-  typescript: { ignoreBuildErrors: true },
-  experimental: { serverActions: true },
   images: {
     remotePatterns: [
       {
