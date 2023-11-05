@@ -20,7 +20,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         navbarIcon:
           "m-0 p-1 transition-all duration-300 ease-in-out hover:bg-accent hover:text-accent-foreground",
-        user: "",
+        user: "flex items-center justify-center",
       },
       size: {
         default: "h-9 rounded-md px-4 py-2 text-sm",
