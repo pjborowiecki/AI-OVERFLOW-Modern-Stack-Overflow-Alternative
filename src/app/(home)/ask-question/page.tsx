@@ -1,15 +1,11 @@
 import { redirect } from "next/navigation"
-import { getServerSession } from "next-auth"
 
+import { getCurrentUser } from "@/lib/auth"
 import { QuestionCreateForm } from "@/components/forms/question-create-form"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
 export default async function AskQuestionPage() {
-  const session = await getServerSession(authOptions)
-
-  if (!session) {
-    redirect("/signin")
-  }
+  const user = await getCurrentUser()
+  if (!user) redirect("/signin")
 
   return (
     <div className="flex flex-col gap-8">
@@ -17,7 +13,7 @@ export default async function AskQuestionPage() {
         Ask a Question
       </h1>
       <div>
-        <QuestionCreateForm userId={session.user.id} />
+        <QuestionCreateForm userId={user.id} />
       </div>
     </div>
   )

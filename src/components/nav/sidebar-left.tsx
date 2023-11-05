@@ -1,21 +1,18 @@
 import Link from "next/link"
-import type { User } from "@prisma/client"
-import { getServerSession } from "next-auth"
 
+import { getCurrentUser } from "@/lib/auth"
 import { SignOutButton } from "@/components/auth/signout-button"
 import { Icons } from "@/components/icons"
 import { SidebarNavigation } from "@/components/nav/navigation-sidebar"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
 export async function LeftSidebar() {
-  const session = await getServerSession(authOptions)
-  const user = session ? (session.user as User) : null
+  const user = await getCurrentUser()
 
   return (
     <aside className="custom-scrollbar sticky left-0 top-0 flex flex-col justify-between border-r border-customLight-800 bg-customLight-900 p-6 pt-36 shadow-customDark-300  dark:border-customDark-300 dark:bg-customDark-200 dark:shadow-none max-sm:hidden lg:w-[266px]">
       <SidebarNavigation userId={user?.id} />
 
-      {session ? (
+      {user ? (
         <SignOutButton />
       ) : (
         <Link

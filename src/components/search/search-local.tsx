@@ -15,6 +15,7 @@ export function LocalSearch({
   placeholder,
   additionalClasses,
 }: LocalSearchProps) {
+  console.log(route) //TODO: Remove later (satisfy linter)
   return (
     <div
       className={cn(

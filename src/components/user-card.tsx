@@ -3,10 +3,9 @@ import { getTopTagsByUser } from "@/actions/tag"
 import { type User } from "@prisma/client"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { TagBadge } from "@/components/tag-badge"
-
-import { Badge } from "./ui/badge"
 
 interface UserCardProps {
   user: Pick<User, "id" | "email" | "image">

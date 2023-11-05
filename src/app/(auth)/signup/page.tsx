@@ -2,8 +2,9 @@ import { type Metadata } from "next"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 import { env } from "@/env.mjs"
-import { getServerSession } from "next-auth/next"
 
+import { getCurrentUser } from "@/lib/auth"
+import { buttonVariants } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -15,7 +16,7 @@ import {
 import { OAuthButtons } from "@/components/auth/oauth-buttons"
 import { SignInWithEmailForm } from "@/components/forms/signin-with-email-form"
 import { SignUpWithPasswordForm } from "@/components/forms/signup-with-password-form"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+import { Icons } from "@/components/icons"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
@@ -24,17 +25,19 @@ export const metadata: Metadata = {
 }
 
 export default async function SignUpPage() {
-  const session = await getServerSession(authOptions)
-
-  if (session) {
-    redirect("/")
-  }
+  const user = await getCurrentUser()
+  if (user) redirect("/")
 
   return (
     <div className="flex h-auto min-h-screen w-full items-center justify-center md:flex">
       <Card className="bg-customLight-800 dark:bg-customDark-300 max-sm:flex max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:rounded-none max-sm:border-none sm:min-w-[370px] sm:max-w-[368px]">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Sign up</CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-2xl">Sign up</CardTitle>
+            <Link href="/" className={buttonVariants({ variant: "ghost" })}>
+              <Icons.close className="h-4 w-4" />
+            </Link>
+          </div>
           <CardDescription className="text-customDark-400 dark:text-customLight-400">
             Choose your preferred sign up method
           </CardDescription>

@@ -51,6 +51,7 @@ export async function getAllUsers(
   params: GetAllUsersParams
 ): Promise<Pick<User, "id" | "email" | "image">[]> {
   try {
+    console.log(params) // TODO: remove later (satisfy linter)
     return await prisma.user.findMany({
       select: {
         id: true,
